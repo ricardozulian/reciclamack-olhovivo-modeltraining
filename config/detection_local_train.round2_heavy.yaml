@@ -1,0 +1,19 @@
+dataset_root: prod_datasets/detection/reciclamack-detection-v1.v2-2026-04-21-first-fix.yolov8
+data_yaml: prod_datasets/detection/reciclamack-detection-v1.v2-2026-04-21-first-fix.yolov8/data.yaml
+model: yolo11n.pt
+project_name: reciclamack_local
+run_name: round2_heavy_960
+output_root: model_pipeline/artifacts/detection_training
+
+training:
+  device: auto
+  epochs: 120
+  imgsz: 960
+  batch: 8
+  patience: 30
+  workers: 4
+  cache: true
+
+export:
+  dynamic: false
+  opset: 17

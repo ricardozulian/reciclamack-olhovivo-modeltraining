@@ -1,0 +1,10 @@
+name: reciclamack-classifier-baseline
+channels:
+  - conda-forge
+dependencies:
+  - python=3.10
+  - numpy
+  - scikit-learn
+  - pillow
+  - joblib
+  - pip

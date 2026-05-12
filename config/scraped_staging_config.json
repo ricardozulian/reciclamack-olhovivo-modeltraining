@@ -1,0 +1,20 @@
+{
+  "description": "No-move planning defaults for scraped-image staging before Roboflow review.",
+  "sources_json": "model_pipeline/config/dataset_v2_sources.json",
+  "class_map_csv": "model_pipeline/config/dataset_v2_class_map.csv",
+  "output_root": "dataset_staging",
+  "targets_csv": "dataset_staging/staging_targets.example.csv",
+  "batch_id": "batch_001",
+  "upload_split": "train",
+  "full_image_label": "0 0.5 0.5 1.0 1.0",
+  "identity_policy": {
+    "image_id": "md5",
+    "future_image_filename": "<md5>.<ext>",
+    "future_label_filename": "<md5>.txt"
+  },
+  "split_policy": {
+    "scraped_images": "Do not assign final train/valid/test split before Roboflow review.",
+    "roboflow_upload_split": "Use temporary train split only for YOLO/Roboflow import structure.",
+    "open_images_sources": "Preserve existing train/test/val lineage; normalize val to valid in final builders."
+  }
+}

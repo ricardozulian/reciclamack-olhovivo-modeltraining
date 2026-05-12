@@ -1,0 +1,59 @@
+source_label,target_label,notes
+smartphone,celular,Primary phone synonym
+mobile phone,celular,English variant
+cell phone,celular,Common variant
+phone,celular,Use only when clearly a handheld phone device
+iphone,celular,Brand-specific alias
+android phone,celular,Device subtype
+feature phone,celular,Legacy phone style
+
+laptop,notebook,Primary synonym
+notebook,notebook,Canonical label
+ultrabook,notebook,Thin laptop subtype
+macbook,notebook,Brand-specific alias
+chromebook,notebook,Device subtype
+
+tablet,tablet,Canonical label
+ipad,tablet,Brand-specific alias
+e-reader,tablet,Only when tablet-like body is visible
+ereader,tablet,Spelling variant
+
+television,televisao,English variant
+tv,televisao,Short form
+smart tv,televisao,Modern subtype
+crt tv,televisao,Legacy subtype
+crt television,televisao,Legacy subtype
+
+charger,carregador,Canonical English synonym
+power adapter,carregador,Common synonym
+adapter,carregador,Only if clearly an electronic charger
+power brick,carregador,Laptop charger brick
+wall charger,carregador,Phone charger subtype
+laptop charger,carregador,Device subtype
+
+printer,impressora,Canonical English synonym
+inkjet printer,impressora,Subtype
+laser printer,impressora,Subtype
+all-in-one printer,impressora,Multifunction subtype
+multifunction printer,impressora,Subtype variant
+mfp,impressora,Abbreviation
+
+battery,bateria,Part class included in hybrid taxonomy
+li-ion battery,bateria,Part class included in hybrid taxonomy
+lithium battery,bateria,Part class included in hybrid taxonomy
+phone battery,bateria,Part class included in hybrid taxonomy
+pcb,placa_eletronica,Part class included in hybrid taxonomy
+circuit board,placa_eletronica,Part class included in hybrid taxonomy
+motherboard,placa_eletronica,Part class included in hybrid taxonomy
+electronic board,placa_eletronica,Part class included in hybrid taxonomy
+capacitor,capacitor,Part class included in hybrid taxonomy
+electrolytic capacitor,capacitor,Part class included in hybrid taxonomy
+cable,cabo,Part class included in hybrid taxonomy
+wire,cabo,Part class included in hybrid taxonomy
+usb cable,cabo,Part class included in hybrid taxonomy
+charging cable,cabo,Part class included in hybrid taxonomy
+monitor,REVIEW,Potential confusion with televisao; manually review
+screen,REVIEW,Too ambiguous; manually review
+power strip,IGNORE,Not a charger target
+extension cord,IGNORE,Not a charger target
+phone case,IGNORE,Accessory-only; not a primary gadget target

@@ -1,0 +1,129 @@
+{
+  "seed": 42,
+  "split_ratio": {
+    "train": 0.7,
+    "valid": 0.2,
+    "test": 0.1
+  },
+  "negative_ratio_target": 0.2,
+  "negative_ratio_tolerance": 0.02,
+  "dedup": {
+    "enabled": true,
+    "near_hamming_threshold": 5,
+    "bucket_prefix_len": 4
+  },
+  "quality": {
+    "min_file_size_bytes": 256
+  },
+  "minimum_class_support": 100,
+  "taxonomy": [
+    "celular",
+    "notebook",
+    "tablet",
+    "televisao",
+    "monitor",
+    "carregador",
+    "impressora",
+    "bateria",
+    "placa_eletronica",
+    "capacitor",
+    "cabo",
+    "keyboard",
+    "mouse",
+    "player",
+    "router",
+    "usb_stick"
+  ],
+  "rebalance": {
+    "enabled": true,
+    "target_class": "placa_eletronica",
+    "max_multiplier_of_next_class": 1.5
+  },
+  "label_map": {
+    "battery": "bateria",
+    "mobile": "celular",
+    "phone": "celular",
+    "pcb": "placa_eletronica",
+    "laptop": "notebook",
+    "television": "televisao",
+    "monitor": "monitor",
+    "printer": "impressora",
+    "keyboard": "keyboard",
+    "keyboard_i": "keyboard",
+    "router": "router",
+    "usb_stick": "usb_stick",
+    "computer_mouse": "mouse",
+    "mouse": "mouse",
+    "keys_objects": "negative",
+    "magnifying_glass": "negative",
+    "satellite_dish_device": "negative",
+    "server_rack": "negative",
+    "washing_machine": "negative",
+    "player": "player",
+    "microwave": "negative",
+    "paper": "negative",
+    "plastic": "negative",
+    "glass": "negative",
+    "metal": "negative",
+    "organic": "negative",
+    "miscellaneous": "negative",
+    "cardboard": "negative",
+    "trash": "negative"
+  },
+  "review_map": {
+    "television": "manual_tv_vs_monitor_review",
+    "televisao": "manual_tv_vs_monitor_review"
+  },
+  "negative_labels": [
+    "negative"
+  ],
+  "component_label_map": {
+    "bypass_capacitor": "capacitor",
+    "electrolytic_capacitor": "capacitor",
+    "jumper_cable": "cabo",
+    "clip_lead": "cabo",
+    "integrated_micro_circuit": "placa_eletronica",
+    "memory_chip": "placa_eletronica",
+    "microchip": "placa_eletronica",
+    "microprocessor": "placa_eletronica",
+    "light_circuit": "placa_eletronica"
+  },
+  "sources": [
+    {
+      "id": "ewaste",
+      "type": "folder",
+      "root": "raw_datasets/e-waste-image-dataset/modified-dataset"
+    },
+    {
+      "id": "waste_classification",
+      "type": "folder",
+      "root": "raw_datasets/waste-classification-datasset/balanced_waste_images"
+    },
+    {
+      "id": "electronics_detection",
+      "type": "folder",
+      "root": "raw_datasets/electronic-object-detection"
+    },
+    {
+      "id": "electronic_components",
+      "type": "folder",
+      "root": "raw_datasets/electronic-components/images"
+    },
+    {
+      "id": "garbage_yolo",
+      "type": "garbage_yolo_negative",
+      "root": "raw_datasets/garbage-dataset-plusyaml/Garbage_dataset_PlusYaml",
+      "allowed_negative_ids": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        6
+      ],
+      "blocked_ids": [
+        5
+      ]
+    }
+  ]
+}

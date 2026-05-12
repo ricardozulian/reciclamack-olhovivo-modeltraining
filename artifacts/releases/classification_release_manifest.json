@@ -1,0 +1,98 @@
+{
+  "generated_at_utc": "2026-04-16T19:05:39Z",
+  "model_version": "classifier-baseline-20260416T190042Z",
+  "dataset_version": "dataset_unified_v1",
+  "dataset_root": "dataset_unified_v1",
+  "dataset_sha256": "142e3347cb6561eb4e3243b7ff0b4b9c47c567d6bda43b93848b11229bcb2475",
+  "manifests_root": "dataset_unified_v1/manifests",
+  "manifests_sha256": "da5ce0bb990e42cc2fdf6584e62813a12b8bb8f5795fd4b9199b83e8714c41cb",
+  "split_class_counts": {
+    "train": {
+      "bateria": 131,
+      "cabo": 332,
+      "capacitor": 369,
+      "celular": 299,
+      "impressora": 227,
+      "keyboard": 221,
+      "negative": 4456,
+      "notebook": 53,
+      "placa_eletronica": 1103,
+      "router": 45,
+      "televisao": 166,
+      "usb_stick": 74
+    },
+    "val": {
+      "bateria": 38,
+      "cabo": 95,
+      "capacitor": 105,
+      "celular": 86,
+      "impressora": 65,
+      "keyboard": 63,
+      "negative": 1373,
+      "notebook": 15,
+      "placa_eletronica": 315,
+      "router": 13,
+      "televisao": 94,
+      "usb_stick": 55
+    },
+    "test": {
+      "bateria": 19,
+      "cabo": 47,
+      "capacitor": 53,
+      "celular": 43,
+      "impressora": 32,
+      "keyboard": 32,
+      "negative": 711,
+      "notebook": 8,
+      "placa_eletronica": 157,
+      "router": 6,
+      "televisao": 49,
+      "usb_stick": 36
+    }
+  },
+  "extra": {
+    "model_version": "classifier-baseline-20260416T190042Z",
+    "model_type": "classification_baseline_sgd_logloss",
+    "dataset_version": "dataset_unified_v1",
+    "dataset_export_hash": "e857601d2fbe0a155202912a8f5928d307bdb45d2d5b4557d421405db47d96cd",
+    "created_at_utc": "20260416T190042Z",
+    "image_size": 48,
+    "seed": 42,
+    "classes": [
+      "bateria",
+      "cabo",
+      "capacitor",
+      "celular",
+      "impressora",
+      "keyboard",
+      "negative",
+      "notebook",
+      "placa_eletronica",
+      "router",
+      "televisao",
+      "usb_stick"
+    ],
+    "split_sizes": {
+      "train": 7476,
+      "val": 2317,
+      "test": 1193
+    },
+    "weak_class_watchlist": [
+      "notebook",
+      "router",
+      "usb_stick"
+    ],
+    "overall_metrics": {
+      "accuracy": 0.5213746856663872,
+      "macro_f1": 0.18828594806775165,
+      "weighted_f1": 0.5210490087997396
+    },
+    "artifact_files": {
+      "model": "model.joblib",
+      "classification_report": "classification_report.json",
+      "confusion_matrix_csv": "confusion_matrix.csv",
+      "confusion_matrix_json": "confusion_matrix.json",
+      "top_confusions": "top_confusions.json"
+    }
+  }
+}

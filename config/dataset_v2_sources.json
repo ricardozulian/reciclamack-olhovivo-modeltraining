@@ -1,0 +1,494 @@
+{
+  "dataset_version": "v2",
+  "dataset_policy_version": "v2",
+  "output_root": "prod_datasets/detection/v2_staging",
+  "split_ratio": {
+    "train": 0.7,
+    "valid": 0.2,
+    "test": 0.1
+  },
+  "annotation_policy": {
+    "instance_mode": "multi_instance_required_when_visible",
+    "unlabeled_object_policy": "warn_review_queue"
+  },
+  "qc": {
+    "missing_instance_policy": "warn"
+  },
+  "folder_renames": [
+    {
+      "old": "notebooks/ml_batery_scraped",
+      "new": "notebooks/ml_battery_scraped"
+    },
+    {
+      "old": "notebooks/kb_tonner_cartdrige_scraped",
+      "new": "notebooks/kb_toner_cartridge_scraped"
+    },
+    {
+      "old": "notebooks/kb_ink_cartdrige_scraped",
+      "new": "notebooks/kb_ink_cartridge_scraped"
+    },
+    {
+      "old": "notebooks/ml_ink_cartdrige_scraped",
+      "new": "notebooks/ml_ink_cartridge_scraped"
+    }
+  ],
+  "taxonomy": [
+    "battery",
+    "cable",
+    "capacitor",
+    "mobile_phone_tablet",
+    "printer_multifunction",
+    "flat_monitor",
+    "mouse",
+    "laptop",
+    "computer_part",
+    "portable_music_player",
+    "network_device",
+    "landline_telephone",
+    "crt_monitor",
+    "usb_stick",
+    "ink_toner_cartridge",
+    "camera",
+    "keyboard",
+    "power_source_charger",
+    "remote",
+    "power_tool",
+    "clock_radio",
+    "headset",
+    "microphone",
+    "smart_watch"
+  ],
+  "portuguese_display_labels": {
+    "battery": "bateria",
+    "cable": "cabo",
+    "capacitor": "capacitor",
+    "mobile_phone_tablet": "celular ou tablet",
+    "printer_multifunction": "impressora multifuncional",
+    "flat_monitor": "monitor",
+    "mouse": "mouse",
+    "laptop": "notebook",
+    "computer_part": "placa eletronica",
+    "portable_music_player": "player de musica portatil",
+    "network_device": "roteador ou dispositivo de rede",
+    "landline_telephone": "telefone fixo",
+    "crt_monitor": "monitor crt",
+    "usb_stick": "pendrive",
+    "ink_toner_cartridge": "cartucho de tinta ou toner",
+    "camera": "camera",
+    "keyboard": "teclado",
+    "power_source_charger": "fonte ou carregador",
+    "remote": "controle remoto",
+    "power_tool": "ferramenta eletrica",
+    "clock_radio": "radio relogio",
+    "headset": "fone de ouvido",
+    "microphone": "microfone",
+    "smart_watch": "relogio inteligente"
+  },
+  "sources": [
+    {
+      "id": "yolo_data_alarm_clock",
+      "type": "direct_yolo",
+      "root": "notebooks/yolo_data_alarm_clock",
+      "canonical_class": "clock_radio",
+      "action": "active",
+      "source_family": "open_images",
+      "source_trust": "real_context"
+    },
+    {
+      "id": "yolo_data_camera",
+      "type": "direct_yolo",
+      "root": "notebooks/yolo_data_camera",
+      "canonical_class": "camera",
+      "action": "active",
+      "source_family": "open_images",
+      "source_trust": "real_context"
+    },
+    {
+      "id": "yolo_data_computer_keyboard",
+      "type": "direct_yolo",
+      "root": "notebooks/yolo_data_computer_keyboard",
+      "canonical_class": "keyboard",
+      "action": "active",
+      "source_family": "open_images",
+      "source_trust": "real_context"
+    },
+    {
+      "id": "yolo_data_computer_monitor",
+      "type": "direct_yolo",
+      "root": "notebooks/yolo_data_computer_monitor",
+      "canonical_class": "",
+      "action": "manual_separation_required",
+      "source_family": "open_images",
+      "source_trust": "mixed_screen"
+    },
+    {
+      "id": "yolo_data_computer_mouse",
+      "type": "direct_yolo",
+      "root": "notebooks/yolo_data_computer_mouse",
+      "canonical_class": "mouse",
+      "action": "active",
+      "source_family": "open_images",
+      "source_trust": "real_context"
+    },
+    {
+      "id": "yolo_data_corded_phone",
+      "type": "direct_yolo",
+      "root": "notebooks/yolo_data_corded_phone",
+      "canonical_class": "landline_telephone",
+      "action": "active",
+      "source_family": "open_images",
+      "source_trust": "real_context"
+    },
+    {
+      "id": "yolo_data_digital_clock",
+      "type": "direct_yolo",
+      "root": "notebooks/yolo_data_digital_clock",
+      "canonical_class": "clock_radio",
+      "action": "active",
+      "source_family": "open_images",
+      "source_trust": "real_context"
+    },
+    {
+      "id": "yolo_data_headphones",
+      "type": "direct_yolo",
+      "root": "notebooks/yolo_data_headphones",
+      "canonical_class": "headset",
+      "action": "active",
+      "source_family": "open_images",
+      "source_trust": "real_context"
+    },
+    {
+      "id": "yolo_data_laptop",
+      "type": "direct_yolo",
+      "root": "notebooks/yolo_data_laptop",
+      "canonical_class": "laptop",
+      "action": "active",
+      "source_family": "open_images",
+      "source_trust": "real_context"
+    },
+    {
+      "id": "yolo_data_light_bulb",
+      "type": "direct_yolo",
+      "root": "notebooks/yolo_data_light_bulb",
+      "canonical_class": "",
+      "action": "exclude_for_now",
+      "source_family": "open_images",
+      "source_trust": "off_scope"
+    },
+    {
+      "id": "yolo_data_mobile_phone",
+      "type": "direct_yolo",
+      "root": "notebooks/yolo_data_mobile_phone",
+      "canonical_class": "mobile_phone_tablet",
+      "action": "active",
+      "source_family": "open_images",
+      "source_trust": "real_context"
+    },
+    {
+      "id": "yolo_data_musical_keyboard",
+      "type": "direct_yolo",
+      "root": "notebooks/yolo_data_musical_keyboard",
+      "canonical_class": "",
+      "action": "exclude_for_now",
+      "source_family": "open_images",
+      "source_trust": "unused"
+    },
+    {
+      "id": "yolo_data_power_plugs_and_sockets",
+      "type": "direct_yolo",
+      "root": "notebooks/yolo_data_power_plugs_and_sockets",
+      "canonical_class": "",
+      "action": "exclude_for_now",
+      "source_family": "open_images",
+      "source_trust": "mixed_off_scope"
+    },
+    {
+      "id": "yolo_data_printer",
+      "type": "direct_yolo",
+      "root": "notebooks/yolo_data_printer",
+      "canonical_class": "printer_multifunction",
+      "action": "active",
+      "source_family": "open_images",
+      "source_trust": "real_context"
+    },
+    {
+      "id": "yolo_data_remote_control",
+      "type": "direct_yolo",
+      "root": "notebooks/yolo_data_remote_control",
+      "canonical_class": "remote",
+      "action": "active",
+      "source_family": "open_images",
+      "source_trust": "real_context"
+    },
+    {
+      "id": "yolo_data_tablet_computer",
+      "type": "direct_yolo",
+      "root": "notebooks/yolo_data_tablet_computer",
+      "canonical_class": "mobile_phone_tablet",
+      "action": "active",
+      "source_family": "open_images",
+      "source_trust": "real_context"
+    },
+    {
+      "id": "yolo_data_television",
+      "type": "direct_yolo",
+      "root": "notebooks/yolo_data_television",
+      "canonical_class": "",
+      "action": "manual_separation_required",
+      "source_family": "open_images",
+      "source_trust": "mixed_screen"
+    },
+    {
+      "id": "kb_cable_scraped",
+      "type": "scraped_full_image_seed",
+      "root": "notebooks/kb_cable_scraped",
+      "canonical_class": "cable",
+      "action": "active",
+      "source_family": "kabum",
+      "source_trust": "studio_product"
+    },
+    {
+      "id": "kb_components_scraped",
+      "type": "scraped_full_image_seed",
+      "root": "notebooks/kb_components_scraped",
+      "canonical_class": "computer_part",
+      "action": "active",
+      "source_family": "kabum",
+      "source_trust": "studio_product"
+    },
+    {
+      "id": "kb_hd_ssd_scraped",
+      "type": "scraped_full_image_seed",
+      "root": "notebooks/kb_hd_ssd_scraped",
+      "canonical_class": "computer_part",
+      "action": "active",
+      "source_family": "kabum",
+      "source_trust": "studio_product"
+    },
+    {
+      "id": "kb_ink_cartridge_scraped",
+      "type": "scraped_full_image_seed",
+      "root": "notebooks/kb_ink_cartridge_scraped",
+      "canonical_class": "ink_toner_cartridge",
+      "action": "active",
+      "source_family": "kabum",
+      "source_trust": "studio_product"
+    },
+    {
+      "id": "kb_keyboard_scraped",
+      "type": "scraped_full_image_seed",
+      "root": "notebooks/kb_keyboard_scraped",
+      "canonical_class": "keyboard",
+      "action": "active",
+      "source_family": "kabum",
+      "source_trust": "studio_product"
+    },
+    {
+      "id": "kb_mobile_phone_tablet_scraped",
+      "type": "scraped_full_image_seed",
+      "root": "notebooks/kb_mobile_phone_tablet_scraped",
+      "canonical_class": "mobile_phone_tablet",
+      "action": "active",
+      "source_family": "kabum",
+      "source_trust": "studio_product"
+    },
+    {
+      "id": "kb_monitor_scraped",
+      "type": "scraped_full_image_seed",
+      "root": "notebooks/kb_monitor_scraped",
+      "canonical_class": "flat_monitor",
+      "action": "manual_separation_required",
+      "source_family": "kabum",
+      "source_trust": "mixed_screen_product"
+    },
+    {
+      "id": "kb_mouse_scraped",
+      "type": "scraped_full_image_seed",
+      "root": "notebooks/kb_mouse_scraped",
+      "canonical_class": "mouse",
+      "action": "active",
+      "source_family": "kabum",
+      "source_trust": "studio_product"
+    },
+    {
+      "id": "kb_network_scraped",
+      "type": "scraped_full_image_seed",
+      "root": "notebooks/kb_network_scraped",
+      "canonical_class": "network_device",
+      "action": "active",
+      "source_family": "kabum",
+      "source_trust": "studio_product"
+    },
+    {
+      "id": "kb_portable_music_player_scraped",
+      "type": "scraped_full_image_seed",
+      "root": "notebooks/kb_portable_music_player_scraped",
+      "canonical_class": "portable_music_player",
+      "action": "active",
+      "source_family": "kabum",
+      "source_trust": "studio_product"
+    },
+    {
+      "id": "kb_printer_multifunction_scraped",
+      "type": "scraped_full_image_seed",
+      "root": "notebooks/kb_printer_multifunction_scraped",
+      "canonical_class": "printer_multifunction",
+      "action": "active",
+      "source_family": "kabum",
+      "source_trust": "studio_product"
+    },
+    {
+      "id": "kb_toner_cartridge_scraped",
+      "type": "scraped_full_image_seed",
+      "root": "notebooks/kb_toner_cartridge_scraped",
+      "canonical_class": "ink_toner_cartridge",
+      "action": "active",
+      "source_family": "kabum",
+      "source_trust": "studio_product"
+    },
+    {
+      "id": "ml_battery_scraped",
+      "type": "scraped_full_image_seed",
+      "root": "notebooks/ml_battery_scraped",
+      "canonical_class": "battery",
+      "action": "active",
+      "source_family": "mercado_livre",
+      "source_trust": "studio_product"
+    },
+    {
+      "id": "ml_camera_scraped",
+      "type": "scraped_full_image_seed",
+      "root": "notebooks/ml_camera_scraped",
+      "canonical_class": "camera",
+      "action": "active",
+      "source_family": "mercado_livre",
+      "source_trust": "studio_product"
+    },
+    {
+      "id": "ml_clock_radio_scraped",
+      "type": "scraped_full_image_seed",
+      "root": "notebooks/ml_clock_radio_scraped",
+      "canonical_class": "clock_radio",
+      "action": "active",
+      "source_family": "mercado_livre",
+      "source_trust": "studio_product"
+    },
+    {
+      "id": "ml_headset_scraped",
+      "type": "scraped_full_image_seed",
+      "root": "notebooks/ml_headset_scraped",
+      "canonical_class": "headset",
+      "action": "active",
+      "source_family": "mercado_livre",
+      "source_trust": "studio_product"
+    },
+    {
+      "id": "ml_ink_cartridge_scraped",
+      "type": "scraped_full_image_seed",
+      "root": "notebooks/ml_ink_cartridge_scraped",
+      "canonical_class": "ink_toner_cartridge",
+      "action": "active",
+      "source_family": "mercado_livre",
+      "source_trust": "studio_product"
+    },
+    {
+      "id": "ml_landline_telephone_scraped",
+      "type": "scraped_full_image_seed",
+      "root": "notebooks/ml_landline_telephone_scraped",
+      "canonical_class": "landline_telephone",
+      "action": "active",
+      "source_family": "mercado_livre",
+      "source_trust": "studio_product"
+    },
+    {
+      "id": "ml_laptop_scraped",
+      "type": "scraped_full_image_seed",
+      "root": "notebooks/ml_laptop_scraped",
+      "canonical_class": "laptop",
+      "action": "active",
+      "source_family": "mercado_livre",
+      "source_trust": "studio_product"
+    },
+    {
+      "id": "ml_loudspeaker_scraped",
+      "type": "scraped_full_image_seed",
+      "root": "notebooks/ml_loudspeaker_scraped",
+      "canonical_class": "portable_music_player",
+      "action": "active",
+      "source_family": "mercado_livre",
+      "source_trust": "studio_product"
+    },
+    {
+      "id": "ml_microphone_scraped",
+      "type": "scraped_full_image_seed",
+      "root": "notebooks/ml_microphone_scraped",
+      "canonical_class": "microphone",
+      "action": "active",
+      "source_family": "mercado_livre",
+      "source_trust": "studio_product"
+    },
+    {
+      "id": "ml_mobile_phone_tablet_scraped",
+      "type": "scraped_full_image_seed",
+      "root": "notebooks/ml_mobile_phone_tablet_scraped",
+      "canonical_class": "mobile_phone_tablet",
+      "action": "active",
+      "source_family": "mercado_livre",
+      "source_trust": "studio_product"
+    },
+    {
+      "id": "ml_power_source_charger_scraped",
+      "type": "scraped_full_image_seed",
+      "root": "notebooks/ml_power_source_charger_scraped",
+      "canonical_class": "power_source_charger",
+      "action": "active",
+      "source_family": "mercado_livre",
+      "source_trust": "studio_product"
+    },
+    {
+      "id": "ml_power_tool_scraped",
+      "type": "scraped_full_image_seed",
+      "root": "notebooks/ml_power_tool_scraped",
+      "canonical_class": "power_tool",
+      "action": "active",
+      "source_family": "mercado_livre",
+      "source_trust": "studio_product"
+    },
+    {
+      "id": "ml_remote_scraped",
+      "type": "scraped_full_image_seed",
+      "root": "notebooks/ml_remote_scraped",
+      "canonical_class": "remote",
+      "action": "active",
+      "source_family": "mercado_livre",
+      "source_trust": "studio_product"
+    },
+    {
+      "id": "ml_smart_watch_scraped",
+      "type": "scraped_full_image_seed",
+      "root": "notebooks/ml_smart_watch_scraped",
+      "canonical_class": "smart_watch",
+      "action": "active",
+      "source_family": "mercado_livre",
+      "source_trust": "studio_product"
+    },
+    {
+      "id": "ml_usb_stick_scraped",
+      "type": "scraped_full_image_seed",
+      "root": "notebooks/ml_usb_stick_scraped",
+      "canonical_class": "usb_stick",
+      "action": "active",
+      "source_family": "mercado_livre",
+      "source_trust": "studio_product"
+    },
+    {
+      "id": "v1_roboflow_fixed",
+      "type": "direct_yolo",
+      "root": "prod_datasets/detection/reciclamack-detection-v1.v2-2026-04-21-first-fix.yolov8",
+      "canonical_class": "",
+      "action": "exclude_for_now",
+      "source_family": "v1_roboflow",
+      "source_trust": "needs_quality_review"
+    }
+  ]
+}

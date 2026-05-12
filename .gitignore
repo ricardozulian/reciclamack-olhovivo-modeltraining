@@ -1,0 +1,44 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Local environments
+.venv/
+venv/
+env/
+.env
+.env.*
+conda/.conda/
+
+# Datasets and local downloads
+data/
+prod_datasets/
+raw_datasets/
+dataset_staging/
+notebooks/*_scraped/
+notebooks/yolo_data_*/
+notebooks/REMOVE_yolo_data_*/
+
+# Generated artifacts and heavy model outputs
+artifacts/detection_training/
+artifacts/classification_baseline/
+runs/
+*.pt
+*.onnx
+*.joblib
+
+# Notebook/runtime caches
+.ipynb_checkpoints/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+

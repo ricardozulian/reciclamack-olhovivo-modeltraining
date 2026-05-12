@@ -1,0 +1,12 @@
+name: reciclamack-manual-review
+channels:
+  - conda-forge
+dependencies:
+  - python=3.10
+  - pandas
+  - pillow
+  - jupyterlab
+  - ipywidgets
+  - matplotlib
+  - pyyaml
+  - pip

@@ -1,0 +1,19 @@
+{
+  "model_version": "yolo11n-ewaste-0.1.0",
+  "dataset_version": "roboflow-kaggle-merge-2026-04-15",
+  "export_hash": "sha256:replace-with-real-hash",
+  "classes": [
+    "celular",
+    "notebook",
+    "tablet",
+    "televisao",
+    "carregador",
+    "impressora",
+    "bateria",
+    "placa_eletronica",
+    "capacitor",
+    "cabo"
+  ],
+  "input_size": 640,
+  "notes": "Modelo inicial para MVP educacional ReciclaMack."
+}

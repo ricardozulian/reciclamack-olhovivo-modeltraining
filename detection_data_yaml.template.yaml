@@ -1,0 +1,21 @@
+path: /content/prod_datasets/detection/v1
+train: train/images
+val: valid/images
+test: test/images
+
+# NOTE:
+# - Keep existing ids unchanged.
+# - Append new classes only at the end for incremental updates.
+# - Prefer using exported Roboflow data.yaml as source of truth for class order.
+names:
+  0: celular
+  1: notebook
+  2: televisao
+  3: bateria
+  4: placa_eletronica
+  5: capacitor
+  6: cabo
+  7: router
+  8: usb_stick
+  9: player
+  10: impressora

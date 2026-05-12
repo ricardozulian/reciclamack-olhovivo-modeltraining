@@ -1,0 +1,14 @@
+{
+  "generated_at_utc": "2026-04-16T19:12:23Z",
+  "model_version": "yolo11n-detection-pending",
+  "dataset_version": "dataset_detection_v1",
+  "dataset_root": "dataset_detection_v1",
+  "dataset_sha256": "b576e0ef8fee1eb561eb4212b5734a4fe7991be6c1e90cf10c2a70d328e4499a",
+  "manifests_root": null,
+  "manifests_sha256": null,
+  "split_class_counts": {
+    "train": {},
+    "val": {},
+    "test": {}
+  }
+}

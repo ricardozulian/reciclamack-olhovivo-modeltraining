@@ -1,0 +1,62 @@
+{
+  "generated_at_utc": "2026-04-21T00:19:02Z",
+  "model_version": "migration-smoke",
+  "dataset_version": "prod_datasets/unified/v1",
+  "dataset_root": "prod_datasets/unified/v1",
+  "dataset_sha256": "d1e981fd3de607020031b797bfcd371f2311539c02ceaf49e787634a99464d04",
+  "manifests_root": "prod_datasets/unified/v1/manifests",
+  "manifests_sha256": "9156961417cccec024a177c806410053a40543f5378903920776d0c92efb658d",
+  "split_class_counts": {
+    "train": {
+      "bateria": 131,
+      "cabo": 332,
+      "capacitor": 369,
+      "celular": 299,
+      "impressora": 227,
+      "keyboard": 221,
+      "monitor": 108,
+      "mouse": 282,
+      "negative": 746,
+      "notebook": 53,
+      "placa_eletronica": 553,
+      "player": 189,
+      "router": 45,
+      "televisao": 124,
+      "usb_stick": 52
+    },
+    "valid": {
+      "bateria": 38,
+      "cabo": 95,
+      "capacitor": 105,
+      "celular": 86,
+      "impressora": 65,
+      "keyboard": 63,
+      "monitor": 31,
+      "mouse": 81,
+      "negative": 214,
+      "notebook": 15,
+      "placa_eletronica": 158,
+      "player": 54,
+      "router": 13,
+      "televisao": 36,
+      "usb_stick": 15
+    },
+    "test": {
+      "bateria": 19,
+      "cabo": 47,
+      "capacitor": 53,
+      "celular": 43,
+      "impressora": 32,
+      "keyboard": 32,
+      "monitor": 15,
+      "mouse": 40,
+      "negative": 106,
+      "notebook": 8,
+      "placa_eletronica": 79,
+      "player": 27,
+      "router": 6,
+      "televisao": 18,
+      "usb_stick": 7
+    }
+  }
+}

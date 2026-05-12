@@ -1,0 +1,20 @@
+dataset_root: data/kaggle/reciclamack-detection-v1
+data_yaml: data/kaggle/reciclamack-detection-v1/data.yaml
+model: yolo11n.pt
+project_name: reciclamack_local
+run_name: kaggle_local_smoke
+output_root: model_pipeline/artifacts/detection_training
+
+training:
+  device: auto
+  epochs: 5
+  imgsz: 640
+  batch: 8
+  patience: 10
+  workers: 4
+  cache: true
+
+export:
+  dynamic: false
+  opset: 17
+

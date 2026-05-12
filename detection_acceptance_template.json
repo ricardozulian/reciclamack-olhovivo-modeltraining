@@ -1,0 +1,42 @@
+{
+  "model_version": "yolo11n-detection-vX",
+  "dataset_version": "dataset_detection_v1",
+  "export_hash": "sha256:replace",
+  "classes": [
+    "celular",
+    "notebook",
+    "tablet",
+    "televisao",
+    "carregador",
+    "impressora",
+    "bateria",
+    "placa_eletronica",
+    "capacitor",
+    "cabo",
+    "keyboard",
+    "router",
+    "usb_stick"
+  ],
+  "split_sizes": {
+    "train": 0,
+    "val": 0,
+    "test": 0
+  },
+  "metrics": {
+    "map50": 0.0,
+    "map50_95": 0.0,
+    "per_class": {}
+  },
+  "false_positive_audit": {
+    "negative_test_images": 0,
+    "fp_rate": 0.0,
+    "top_fp_pairs": []
+  },
+  "confusion_summary": {
+    "top_confusions": []
+  },
+  "acceptance_decision": {
+    "status": "PENDING",
+    "rationale": ""
+  }
+}

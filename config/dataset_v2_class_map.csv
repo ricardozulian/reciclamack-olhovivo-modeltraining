@@ -1,0 +1,59 @@
+source_folder,canonical_class,portuguese_display_label,status,notes
+ml_battery_scraped,battery,bateria,active,Corrected folder name.
+kb_cable_scraped,cable,cabo,active,
+kb_components_scraped,computer_part,placa eletronica,active,
+kb_hd_ssd_scraped,computer_part,placa eletronica,active,Section 3a merged source.
+kb_ink_cartridge_scraped,ink_toner_cartridge,cartucho de tinta ou toner,active,Corrected folder name; merged cartridge class.
+kb_keyboard_scraped,keyboard,teclado,active,
+kb_mobile_phone_tablet_scraped,mobile_phone_tablet,celular ou tablet,active,
+kb_monitor_scraped,flat_monitor,monitor,manual_separation_required,May contain TVs streaming devices antennas and accessories.
+kb_mouse_scraped,mouse,mouse,active,
+kb_network_scraped,network_device,roteador ou dispositivo de rede,active,
+kb_portable_music_player_scraped,portable_music_player,player de musica portatil,active,
+kb_printer_multifunction_scraped,printer_multifunction,impressora multifuncional,active,
+kb_toner_cartridge_scraped,ink_toner_cartridge,cartucho de tinta ou toner,active,Corrected folder name; merged cartridge class.
+ml_camera_scraped,camera,camera,active,
+ml_clock_radio_scraped,clock_radio,radio relogio,active,
+ml_headset_scraped,headset,fone de ouvido,active,
+ml_ink_cartridge_scraped,ink_toner_cartridge,cartucho de tinta ou toner,active,Corrected folder name; merged cartridge class.
+ml_landline_telephone_scraped,landline_telephone,telefone fixo,active,
+ml_laptop_scraped,laptop,notebook,active,
+ml_loudspeaker_scraped,portable_music_player,player de musica portatil,active,Section 3a merged source.
+ml_microphone_scraped,microphone,microfone,active,
+ml_mobile_phone_tablet_scraped,mobile_phone_tablet,celular ou tablet,active,
+ml_power_source_charger_scraped,power_source_charger,fonte ou carregador,active,
+ml_power_tool_scraped,power_tool,ferramenta eletrica,active,
+ml_remote_scraped,remote,controle remoto,active,
+ml_smart_watch_scraped,smart_watch,relogio inteligente,active,
+ml_usb_stick_scraped,usb_stick,pendrive,active,
+yolo_data_alarm_clock,clock_radio,radio relogio,active,
+yolo_data_camera,camera,camera,active,
+yolo_data_computer_keyboard,keyboard,teclado,active,
+yolo_data_computer_monitor,,monitor,manual_separation_required,Mixes CRT and flat screens.
+yolo_data_computer_mouse,mouse,mouse,active,
+yolo_data_corded_phone,landline_telephone,telefone fixo,active,
+yolo_data_digital_clock,clock_radio,radio relogio,active,
+yolo_data_headphones,headset,fone de ouvido,active,
+yolo_data_laptop,laptop,notebook,active,
+yolo_data_light_bulb,,lampada,exclude_for_now,Mixed and outside current target until reviewed.
+yolo_data_mobile_phone,mobile_phone_tablet,celular ou tablet,active,
+yolo_data_musical_keyboard,,teclado musical,exclude_for_now,Still unused.
+yolo_data_power_plugs_and_sockets,,tomadas e plugues,exclude_for_now,Mixed and outside current target until reviewed.
+yolo_data_printer,printer_multifunction,impressora multifuncional,active,
+yolo_data_remote_control,remote,controle remoto,active,
+yolo_data_tablet_computer,mobile_phone_tablet,celular ou tablet,active,
+yolo_data_television,,monitor crt,manual_separation_required,Mixes CRT and flat screens.
+bateria,battery,bateria,active,V1 remap.
+cabo,cable,cabo,active,V1 remap.
+capacitor,capacitor,capacitor,active,V1 remap.
+celular,mobile_phone_tablet,celular ou tablet,active,V1 remap.
+impressora,printer_multifunction,impressora multifuncional,active,V1 remap.
+monitor,flat_monitor,monitor,active,V1 remap.
+mouse,mouse,mouse,active,V1 remap.
+notebook,laptop,notebook,active,V1 remap.
+placa_eletronica,computer_part,placa eletronica,active,V1 remap.
+player,portable_music_player,player de musica portatil,active,V1 remap.
+router,network_device,roteador ou dispositivo de rede,active,V1 remap.
+telephone,landline_telephone,telefone fixo,active,V1 remap.
+televisao,crt_monitor,monitor crt,active,V1 remap.
+usb_stick,usb_stick,pendrive,active,V1 remap.
