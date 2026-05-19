@@ -19,6 +19,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--imgsz", type=int, default=None)
     parser.add_argument("--batch", type=int, default=None)
     parser.add_argument("--device", type=str, default=None)
+    parser.add_argument("--resume-from", type=Path, default=None, help="Resume an interrupted Ultralytics run from last.pt.")
     return parser.parse_args()
 
 
@@ -60,6 +61,21 @@ def parse_names_from_data_yaml(path: Path) -> list[str]:
     return [names_map[i] for i in sorted(names_map)] if names_map else []
 
 
+def write_resolved_data_yaml(source_yaml: Path, dataset_root: Path, run_dir: Path) -> Path:
+    data = yaml.safe_load(source_yaml.read_text(encoding="utf-8"))
+    if not isinstance(data, dict):
+        raise ValueError(f"Invalid data YAML: {source_yaml}")
+
+    data["path"] = dataset_root.as_posix()
+    data.setdefault("train", "train/images")
+    data.setdefault("val", "valid/images")
+    data.setdefault("test", "test/images")
+
+    resolved = run_dir / "data_resolved.yaml"
+    resolved.write_text(yaml.safe_dump(data, sort_keys=False, allow_unicode=True), encoding="utf-8")
+    return resolved
+
+
 def resolve_device(preferred: str | None) -> str:
     if preferred and preferred != "auto":
         return preferred
@@ -77,6 +93,42 @@ def safe_metric(value: Any) -> float | None:
         return None
 
 
+def metric_values(value: Any) -> list[Any]:
+    if value is None:
+        return []
+    try:
+        return list(value)
+    except TypeError:
+        return [value]
+
+
+def per_class_detection_metrics(results: Any, class_names: list[str]) -> list[dict[str, float | int | str | None]]:
+    box = getattr(results, "box", None)
+    if box is None:
+        return [{"class_id": idx, "class_name": name} for idx, name in enumerate(class_names)]
+
+    class_indices = metric_values(getattr(box, "ap_class_index", range(len(class_names))))
+    precision = metric_values(getattr(box, "p", None))
+    recall = metric_values(getattr(box, "r", None))
+    ap50 = metric_values(getattr(box, "ap50", None))
+    maps = metric_values(getattr(box, "maps", None))
+
+    rows: list[dict[str, float | int | str | None]] = []
+    for metric_idx, class_id_raw in enumerate(class_indices):
+        class_id = int(class_id_raw)
+        rows.append(
+            {
+                "class_id": class_id,
+                "class_name": class_names[class_id] if class_id < len(class_names) else str(class_id),
+                "precision": safe_metric(precision[metric_idx]) if metric_idx < len(precision) else None,
+                "recall": safe_metric(recall[metric_idx]) if metric_idx < len(recall) else None,
+                "mAP50": safe_metric(ap50[metric_idx]) if metric_idx < len(ap50) else None,
+                "mAP50_95": safe_metric(maps[class_id]) if class_id < len(maps) else None,
+            }
+        )
+    return rows
+
+
 def main() -> None:
     args = parse_args()
     cfg = yaml.safe_load(args.config.read_text(encoding="utf-8"))
@@ -84,7 +136,8 @@ def main() -> None:
     dataset_root = Path(cfg["dataset_root"]).resolve()
     data_yaml = Path(cfg["data_yaml"]).resolve()
     output_root = Path(cfg.get("output_root", "model_pipeline/artifacts/detection_training")).resolve()
-    model_name = str(cfg.get("model", "yolo11n.pt"))
+    resume_from = args.resume_from.resolve() if args.resume_from else None
+    model_name = str(resume_from if resume_from else cfg.get("model", "yolo11n.pt"))
     project_name = str(cfg.get("project_name", "reciclamack_local"))
     run_name = str(cfg.get("run_name", datetime.now(timezone.utc).strftime("run_%Y%m%dT%H%M%SZ")))
     training = cfg.get("training", {})
@@ -100,27 +153,31 @@ def main() -> None:
 
     run_dir = output_root / run_name
     run_dir.mkdir(parents=True, exist_ok=True)
+    train_data_yaml = write_resolved_data_yaml(data_yaml, dataset_root, run_dir)
 
     from ultralytics import YOLO
 
     model = YOLO(model_name)
-    train_results = model.train(
-        data=str(data_yaml),
-        epochs=epochs,
-        imgsz=imgsz,
-        batch=batch,
-        device=device,
-        project=str(output_root),
-        name=run_name,
-        patience=patience,
-        workers=workers,
-        cache=cache,
-    )
+    if resume_from:
+        train_results = model.train(resume=True)
+    else:
+        train_results = model.train(
+            data=str(train_data_yaml),
+            epochs=epochs,
+            imgsz=imgsz,
+            batch=batch,
+            device=device,
+            project=str(output_root),
+            name=run_name,
+            patience=patience,
+            workers=workers,
+            cache=cache,
+        )
 
     best_pt = Path(train_results.save_dir) / "weights" / "best.pt"
     best_model = YOLO(str(best_pt))
     test_results = best_model.val(
-        data=str(data_yaml),
+        data=str(train_data_yaml),
         split="test",
         imgsz=imgsz,
         batch=batch,
@@ -138,15 +195,7 @@ def main() -> None:
     onnx_path = Path(str(onnx_result)).resolve()
 
     class_names = parse_names_from_data_yaml(data_yaml)
-    class_maps: list[float] = []
-    try:
-        class_maps = [float(x) for x in list(test_results.box.maps)]
-    except Exception:
-        class_maps = []
-    class_metrics = [
-        {"class_name": name, "mAP50_95": class_maps[idx] if idx < len(class_maps) else None}
-        for idx, name in enumerate(class_names)
-    ]
+    class_metrics = per_class_detection_metrics(test_results, class_names)
 
     metrics_summary = {
         "precision_B": safe_metric(getattr(test_results.box, "mp", None)),
@@ -158,7 +207,9 @@ def main() -> None:
     resolved_cfg = {
         "dataset_root": dataset_root.as_posix(),
         "data_yaml": data_yaml.as_posix(),
+        "resolved_data_yaml": train_data_yaml.as_posix(),
         "model": model_name,
+        "resume_from": resume_from.as_posix() if resume_from else None,
         "project_name": project_name,
         "run_name": run_name,
         "output_root": output_root.as_posix(),
@@ -182,6 +233,7 @@ def main() -> None:
         "generated_at_utc": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "dataset_root": dataset_root.as_posix(),
         "data_yaml": data_yaml.as_posix(),
+        "resolved_data_yaml": train_data_yaml.as_posix(),
         "data_yaml_sha256": sha256_file(data_yaml),
         "best_pt": best_pt.resolve().as_posix(),
         "best_pt_sha256": sha256_file(best_pt),
@@ -201,4 +253,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

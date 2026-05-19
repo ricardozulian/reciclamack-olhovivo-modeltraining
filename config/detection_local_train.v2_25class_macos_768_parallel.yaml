@@ -1,0 +1,19 @@
+dataset_root: prod_datasets/detection/v2_25class
+data_yaml: prod_datasets/detection/v2_25class/data.yaml
+model: yolo11n.pt
+project_name: reciclamack_local
+run_name: v2_25class_macos_768_parallel
+output_root: model_pipeline/artifacts/detection_training
+
+training:
+  device: auto
+  epochs: 80
+  imgsz: 768
+  batch: 8
+  patience: 20
+  workers: 4
+  cache: false
+
+export:
+  dynamic: false
+  opset: 17
